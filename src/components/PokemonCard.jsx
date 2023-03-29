@@ -1,50 +1,46 @@
 const card = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
   width: "500px",
   padding: "1rem",
-  backgroundColor: pokemon.color,
-  borderRadius: "5px",
-  boxShadow: "0px 0px 5px gray",
+  borderRadius: "10px",
+  boxShadow: "0px 0px 15px gray",
   color: "white",
-  fontSize: "1.6rem",
+  fontSize: "5rem",
   textAlign: "center",
   textShadow: "0px 0px 5px gray",
 };
 
-const pokemonList = [
-  {
-    name: "bulbasaur",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-    color: "green",
-  },
-  {
-    name: "charmander",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-    color: "red",
-  },
-  {
-    name: "squirtle",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-    color: "blue",
-  },
-  {
-    name: "mew",
-  },
-];
+const cardImg = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  width: "90%",
+  height: "50%",
+  marginBottom: "3rem",
+  backgroundColor: "white",
+  borderRadius: "10px",
+  boxShadow: "0px 0px 5px gray",
+};
 
-function PokemonCard() {
-  const pokemon = pokemonList[0];
+function PokemonCard(props) {
+  card.backgroundColor = props.pokemon.color;
 
   return (
     <figure style={card}>
-      {pokemon.imgSrc ? (
-        <img src={pokemon.imgSrc} alt={pokemon.name}></img>
-      ) : (
-        <p>???</p>
-      )}
-      <figcaption>{pokemon.name}</figcaption>
+      <div style={cardImg}>
+        {props.pokemon.imgSrc ? (
+          <img
+            src={props.pokemon.imgSrc}
+            alt={props.pokemon.name}
+            width={"90%"}
+          ></img>
+        ) : (
+          <p>???</p>
+        )}
+      </div>
+      <figcaption>{props.pokemon.name}</figcaption>
     </figure>
   );
 }

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const card = {
   display: "flex",
   flexDirection: "column",
@@ -26,6 +28,14 @@ const cardImg = {
 
 function PokemonCard(props) {
   card.backgroundColor = props.pokemon.color;
+
+  PokemonCard.propTypes = {
+    pokemon: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      imgSrc: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+    }).isRequired,
+  };
 
   return (
     <figure style={card}>

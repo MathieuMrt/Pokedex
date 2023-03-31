@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import PokemonCard from "./components/PokemonCard.jsx";
+import NavBar from "./components/NavBar";
 
 function App() {
   const pokemonList = [
@@ -10,25 +11,73 @@ function App() {
       name: "Bulbizarre",
       imgSrc:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-      color: "lightgreen",
+      color: "#8BC6AB",
       type: "plante / poison",
       number: 1,
+    },
+    {
+      name: "Herbizarre",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
+      color: "#86BFC4",
+      type: "plante / poison",
+      number: 2,
+    },
+    {
+      name: "Florizarre",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+      color: "#83B2B1",
+      type: "plante / poison",
+      number: 3,
     },
     {
       name: "Salamèche",
       imgSrc:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-      color: "lightsalmon",
+      color: "#E7A87B",
       type: "feu",
       number: 4,
+    },
+    {
+      name: "Reptincel",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png",
+      color: "#E07E6D",
+      type: "feu",
+      number: 5,
+    },
+    {
+      name: "Dracaufeu",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
+      color: "#EDA263",
+      type: "feu / vol",
+      number: 6,
     },
     {
       name: "Carapuce",
       imgSrc:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-      color: "lightblue",
+      color: "#8EC5D3",
       type: "eau",
       number: 7,
+    },
+    {
+      name: "Carabaffe",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png",
+      color: "#AEBCDB",
+      type: "eau",
+      number: 8,
+    },
+    {
+      name: "Tortank",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+      color: "#8DA9CE",
+      type: "eau",
+      number: 9,
     },
     {
       name: "Pikachu",
@@ -39,14 +88,6 @@ function App() {
       number: 25,
     },
     {
-      name: "Mew",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png",
-      color: "#EFC5CE",
-      type: "psy",
-      number: 151,
-    },
-    {
       name: "MewTwo",
       imgSrc:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png",
@@ -54,29 +95,28 @@ function App() {
       type: "psy",
       number: 150,
     },
+    {
+      name: "Mew",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png",
+      color: "#EFC5CE",
+      type: "psy",
+      number: 151,
+    },
   ];
 
   let [pokemonIndex, setPokemonIndex] = useState(0);
-
-  const handleClick = () => {
-    pokemonIndex === 0
-      ? setPokemonIndex((pokemonIndex = pokemonList.length - 1))
-      : setPokemonIndex(pokemonIndex - 1);
-  };
-
-  const handleClick2 = () => {
-    pokemonIndex >= pokemonList.length - 1
-      ? setPokemonIndex((pokemonIndex = 0))
-      : setPokemonIndex(pokemonIndex + 1);
-  };
 
   return (
     <div className="App">
       <div>
         <PokemonCard pokemon={pokemonList[pokemonIndex]} />
       </div>
-      <button onClick={handleClick}>Précédent</button>
-      <button onClick={handleClick2}>Suivant</button>
+      <NavBar
+        pokemonIndex={pokemonIndex}
+        setPokemonIndex={setPokemonIndex}
+        pokemonList={pokemonList}
+      />
     </div>
   );
 }

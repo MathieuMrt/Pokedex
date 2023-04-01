@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import PokemonCard from "./components/PokemonCard.jsx";
 import NavBar from "./components/NavBar";
+import Repeat from "./components/Repeat";
 
 function App() {
   const pokemonList = [
@@ -105,13 +106,16 @@ function App() {
     },
   ];
 
-  let [pokemonIndex, setPokemonIndex] = useState(0);
+  const [pokemonIndex, setPokemonIndex] = useState(0);
+  const handlePokemonClick = (index) => setPokemonIndex(index);
 
   return (
     <div className="App">
+      <Repeat pokemonList={pokemonList} onPokemonClick={handlePokemonClick} />
       <div>
         <PokemonCard pokemon={pokemonList[pokemonIndex]} />
       </div>
+
       <NavBar
         pokemonIndex={pokemonIndex}
         setPokemonIndex={setPokemonIndex}
